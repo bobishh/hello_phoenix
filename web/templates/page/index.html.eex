@@ -1,0 +1,7 @@
+<h1> About this blog </h2>
+<div class="about__container">
+  <p class="about__text">
+    Simple blog
+  </p>
+  <%= render "author.html" %>
+</div>

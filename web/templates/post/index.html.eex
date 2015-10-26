@@ -1,0 +1,5 @@
+<h1> listing posts </h1>
+<%= for post <- @posts do %>
+    <%= render "post_preview.html", post: post, conn: @conn %>
+<% end %>
+

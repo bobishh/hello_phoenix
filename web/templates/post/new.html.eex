@@ -1,0 +1,2 @@
+<h1> Create post </h1>
+<%= render "form.html", changeset: @changeset, action: :create, path: post_path(@conn, :create) %>

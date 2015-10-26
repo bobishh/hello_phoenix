@@ -1,0 +1,17 @@
+<%= form_for @changeset, @path, fn f -> %>
+    <%= if f.errors != [] do %>
+        <div class="alert alert-danger">
+        <p> Form error: </p>
+        <ul>
+            <%= for {attr, message} <- f.errors do %>
+                <li><%= humanize(attr) %> <%= message %></li>
+            <% end %>
+        </ul>
+        </div>
+    <% end %>
+    <div class="post-form__text">
+      <%= text_input f, :user_id, value: 1 %>
+        <%= textarea f, :text, placeholder: "Post content" %>
+    </div>
+    <%= submit submit_button_text(@action), class: "post-form__submit button" %>
+<% end %>

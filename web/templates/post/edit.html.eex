@@ -1,0 +1,2 @@
+<h1> Edit a post </h1>
+<%= render "form.html", action: :update, changeset: @changeset, path: post_path(@conn, :update, @changeset.model.id) %>

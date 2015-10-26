@@ -1,0 +1,8 @@
+<div class="post">
+  <h1 class="post__header">
+    <%= @post.inserted_at %>
+  </h1>
+  <pre class="post__content">
+    <%= @post.text %>
+  </pre>
+</div>

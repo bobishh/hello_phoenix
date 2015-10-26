@@ -1,0 +1,5 @@
+<div class="post">
+  <%= link "Edit", to: post_path(@conn, :edit, @post.id) %>
+  <%= link "Delete", to: post_path(@conn, :destroy, @post.id) %>
+  <%= render "post.html", post: @post %>
+</div>

@@ -1,0 +1,10 @@
+<div class="post-preview">
+  <h2 class="post-preview__header">
+    <%= @post.inserted_at %>
+  </h2>
+  <pre class="post-preview__short_text">
+    <%= short_text(@post.text) %>
+    <%= link "...", to: post_path(@conn, :show, @post.id), class_name: "post-preview__link" %>
+    <%= link "Edit", to: post_path(@conn, :edit, @post.id) %>
+  </pre>
+</div>

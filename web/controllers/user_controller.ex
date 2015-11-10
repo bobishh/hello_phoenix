@@ -2,8 +2,10 @@ defmodule HelloPhoenix.UserController do
   use HelloPhoenix.Web, :controller
   alias HelloPhoenix.Auth
   alias HelloPhoenix.User
+  import HelloPhoenix.Auth, only: [authenticate_user: 2]
 
   plug :scrub_params, "user" when action in [:create, :update]
+  plug :authenticate_user
 
   def index(conn, _params) do
     users = Repo.all(User)

@@ -1,9 +1,10 @@
 defmodule HelloPhoenix.PostController do
   use HelloPhoenix.Web, :controller
   alias HelloPhoenix.Post
-  alias HelloPhoenix.Auth
+  alias HelloPhoenix.UserController
+  import HelloPhoenix.Auth, only: [authenticate_user: 2]
 
-  plug :authenticate when action in [:new, :create, :delete]
+  plug :authenticate_user when action in [:new, :create, :delete]
 
   def index(conn, _params) do
     posts = Repo.all(Post)
@@ -54,17 +55,6 @@ defmodule HelloPhoenix.PostController do
   def show(conn, %{"id" => id}) do
     post = Repo.get(Post, id)
     render conn, "post.html", post: post
-  end
-
-  defp authenticate(conn, opts) do
-    if conn.assigns.current_user do
-      conn
-    else
-      conn
-      |> put_flash(:error, "You must be signed in.")
-      |> redirect(to: page_path(conn, :index))
-      |> halt()
-    end
   end
 
 end

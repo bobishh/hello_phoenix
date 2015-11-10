@@ -1,6 +1,8 @@
 defmodule HelloPhoenix.Auth do
   import Plug.Conn
   import Comeonin.Bcrypt, only: [checkpw: 2]
+  import Phoenix.Controller
+  alias HelloPhoenix.Router.Helpers
   alias HelloPhoenix.User
 
   def init(opts) do
@@ -33,6 +35,17 @@ defmodule HelloPhoenix.Auth do
     |> assign(:current_user, user)
     |> put_session(:user_id, user.id)
     |> configure_session(renew: true)
+  end
+
+  def authenticate_user(conn, _opts) do
+    if conn.assigns.current_user do
+      conn
+    else
+      conn
+      |> put_flash(:error, "You must be signed in.")
+      |> redirect(to: Helpers.page_path(conn, :index))
+      |> halt()
+    end
   end
 
   def logout(conn) do

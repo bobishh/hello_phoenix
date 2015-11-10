@@ -1,0 +1,14 @@
+<ul class="menu__list">
+  <%= if @conn.assigns.current_user do %>
+    <li class="menu__item">
+      <%= link "logout", to: session_path(@conn, :delete, @conn.assigns.current_user), method: :delete %>
+    </li>
+  <% else %>
+    <li class="menu__item">
+      <%= link "login", to: session_path(@conn, :new) %>
+    </li>
+    <li class="menu__item">
+      <%= link "register", to: user_path(@conn, :new) %>
+    </li>
+  <% end %>
+</ul>

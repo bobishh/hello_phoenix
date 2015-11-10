@@ -1,0 +1,8 @@
+<ul class="menu__list">
+  <li class="menu__item">
+    <%= link "posts", to: post_path(@conn, :index) %>
+  </li>
+  <li class="menu__item">
+    <%= link "about", to: page_path(@conn, :index) %>
+  </li>
+</ul>

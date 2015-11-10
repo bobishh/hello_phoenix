@@ -13,16 +13,15 @@
 
   <body>
     <div class="container" role="main">
-      <div class="nav-panel">
-        <nav class="menu">
-          <ul class="menu__list">
-            <li class="menu__item">
-              <a href="/posts">Posts</a>
-            </li>
-            <li class="menu__item">
-              <a href="/about">About</a>
-            </li>
-          </ul>
+      <div class="nav-panel row">
+        <nav class="menu col-4">
+          <%= render "user_menu.html", conn: @conn %>
+        </nav>
+        <nav class="menu col-4">
+          <%= render "shared_menu.html", conn: @conn %>
+        </nav>
+        <nav class="menu col-4">
+          <%= render "entrance_menu.html", conn: @conn %>
         </nav>
       </div>
 

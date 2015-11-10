@@ -7,6 +7,7 @@ defmodule HelloPhoenix.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug HelloPhoenix.Auth, repo: HelloPhoenix.Repo
   end
 
   pipeline :api do
@@ -19,6 +20,8 @@ defmodule HelloPhoenix.Router do
     get "/", PageController, :index
     get "/about", PageController, :index
     resources "/posts", PostController
+    resources "/sessions", SessionController, only: [:new, :create, :delete]
+    resources "/users", UserController
   end
 
   # Other scopes may use custom stacks.

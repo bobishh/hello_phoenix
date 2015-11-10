@@ -1,0 +1,37 @@
+<h2>Listing users</h2>
+
+<%= link "New user", to: user_path(@conn, :new), class: "button" %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Email confirmed?</th>
+      <th>Created at</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for user <- @users do %>
+    <tr>
+      <td><%= user.name %></td>
+      <td><%= user.email %></td>
+      <td><%= if user.confirmed do %>
+            Yes
+        <%= else %>
+            No
+        <% end %>
+      </td>
+      <td> <%= user.inserted_at %> </td>
+
+      <td class="text-right">
+        <%= link "Show", to: user_path(@conn, :show, user), class: "button button-default button-xs" %>
+        <%= link "Edit", to: user_path(@conn, :edit, user), class: "button button-default button-xs" %>
+        <%= link "Delete", to: user_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"], class: "button button-danger button-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+

@@ -10,7 +10,7 @@
         </div>
     <% end %>
     <div class="post-form__text">
-      <%= text_input f, :user_id, value: 1 %>
+      <%= text_input f, :user_id, value: @user_id, class: "hidden"%>
         <%= textarea f, :text, placeholder: "Post content" %>
     </div>
     <%= submit submit_button_text(@action), class: "post-form__submit button" %>

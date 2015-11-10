@@ -1,0 +1,12 @@
+<ul class="menu__list">
+  <li class="menu__item">
+    <div class="logo">
+        Eternalvoid
+    </div>
+  </li>
+  <%= if @conn.assigns.current_user do %>
+    <li class="menu__item">
+        <%= link "new post", to: post_path(@conn, :new) %>
+    </li>
+  <% end %>
+</ul>

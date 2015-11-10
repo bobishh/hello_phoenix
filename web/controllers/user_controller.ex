@@ -5,7 +5,7 @@ defmodule HelloPhoenix.UserController do
   import HelloPhoenix.Auth, only: [authenticate_user: 2]
 
   plug :scrub_params, "user" when action in [:create, :update]
-  plug :authenticate_user
+  plug :authenticate_user when not action in [:create, :new]
 
   def index(conn, _params) do
     users = Repo.all(User)
